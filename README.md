@@ -17,6 +17,9 @@ It can be installed from the store via:
     sudo snap install pyls
 ```
 
+It provides the `pyls` command and also exposes related tools (`isort`, `mypy`,
+`pyflakes`, ...).
+
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/pyls)
 
 

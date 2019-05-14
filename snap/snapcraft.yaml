@@ -21,6 +21,10 @@ apps:
     command: bin/isort
     plugs:
       - home
+  mypy:
+    command: bin/mypy
+    plugs:
+      - home    
   pyflakes:
     command: bin/pyflakes
     plugs:
