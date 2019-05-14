@@ -4,7 +4,7 @@ description: |
   A Python implementation of the Language Server Protocol.
 
   See https://github.com/palantir/python-language-server for details.
-license: LGPL-3.0+
+license: MIT
 confinement: strict
 grade: stable
 base: core18
