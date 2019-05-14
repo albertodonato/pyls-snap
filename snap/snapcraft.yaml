@@ -41,6 +41,9 @@ parts:
     source-type: git
     python-packages:
       - python-language-server[all]
+      - pyls-mypy
+      - pyls-isort
+      - pyls-black
     filesets:
       bins:
         - bin
