@@ -1,0 +1,63 @@
+name: pyls
+summary: Python Language Server
+description: |
+  A Python implementation of the Language Server Protocol.
+
+  See https://github.com/palantir/python-language-server for details.
+license: LGPL-3.0+
+confinement: strict
+grade: stable
+base: core18
+adopt-info: pyls
+
+apps:
+  pyls:
+    command: bin/pyls
+    plugs:
+      - home
+      - network-bind
+      - network
+  isort:
+    command: bin/isort
+    plugs:
+      - home
+  pyflakes:
+    command: bin/pyflakes
+    plugs:
+      - home
+  pylint:
+    command: bin/pylint
+    plugs:
+      - home
+  yapf:
+    command: bin/yapf
+    plugs:
+      - home
+
+parts:
+  pyls:
+    plugin: python
+    source: .
+    source-type: git
+    python-packages:
+      - python-language-server[all]
+    filesets:
+      bins:
+        - bin
+        - usr/bin/python3
+        - usr/bin/python3.6
+      libs:
+        - lib
+        - usr/lib
+        - -usr/lib/python3.7
+    prime:
+      - $bins
+      - etc/python3.6
+      - $libs
+    override-prime: |
+      set -ex
+
+      PYLS_VERSION=$(sed -n 's/.*- python-language-server=//p' "$SNAPCRAFT_PART_BUILD/../state/build")
+      GIT_HASH=$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)
+      snapcraftctl set-version "${PYLS_VERSION}-snap.${GIT_HASH}"
+      snapcraftctl prime
