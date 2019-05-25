@@ -62,7 +62,7 @@ parts:
       - etc/python3.6
       - $libs
     override-prime: |
-      set -ex
+      set -e
 
       PYLS_VERSION=$(sed -n 's/.*- python-language-server=//p' "$SNAPCRAFT_PART_BUILD/../state/build")
       GIT_HASH=$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)
