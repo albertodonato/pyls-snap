@@ -51,9 +51,7 @@ parts:
       - pyls-mypy
       - pyls-isort
       - pyls-black
-      - --no-binary=typed-ast
     build-packages:
-      - build-essential
       - libpython3-dev
     filesets:
       bins:
@@ -70,7 +68,6 @@ parts:
       - $libs
     override-prime: |
       set -e
-
       PYLS_VERSION=$(sed -n 's/.*- python-language-server=//p' "$SNAPCRAFT_PART_BUILD/../state/build")
       GIT_HASH=$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)
       snapcraftctl set-version "${PYLS_VERSION}-snap.${GIT_HASH}"
