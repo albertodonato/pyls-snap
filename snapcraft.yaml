@@ -11,7 +11,6 @@ base: core18
 adopt-info: pyls
 architectures:
   - build-on: amd64
-  - build-on: i386
 
 apps:
   pyls:
