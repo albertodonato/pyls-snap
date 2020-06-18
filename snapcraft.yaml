@@ -7,10 +7,10 @@ description: |
 license: MIT
 confinement: strict
 grade: stable
-base: core18
-adopt-info: pyls
+base: core20
 architectures:
   - build-on: amd64
+adopt-info: pyls
 
 apps:
   pyls:
@@ -18,7 +18,6 @@ apps:
     plugs:
       - home
       - network-bind
-      - network
   isort:
     command: bin/isort
     plugs:
@@ -50,24 +49,14 @@ parts:
       - pyls-black
       - pyls-isort
       - pyls-mypy
-    build-packages:
-      - libpython3-dev
-    filesets:
-      bins:
-        - bin
-        - usr/bin/python3
-        - usr/bin/python3.6
-      libs:
-        - lib
-        - usr/lib
-        - -usr/lib/python3.7
     prime:
-      - $bins
-      - etc/python3.6
-      - $libs
-    override-prime: |
+      - bin
+      - lib
+      - pyvenv.cfg
+    override-build: |
       set -e
-      PYLS_VERSION=$(sed -n 's/.*- python-language-server=//p' "$SNAPCRAFT_PART_BUILD/../state/build")
-      GIT_HASH=$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)
+      snapcraftctl build
+      PYLS_VERSION="$(pip show pip | awk '/^Version/ { print $2}')"
+      GIT_HASH="$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)"
       snapcraftctl set-version "${PYLS_VERSION}-snap.${GIT_HASH}"
-      snapcraftctl prime
+      python3 -m compileall -q .
