@@ -18,6 +18,10 @@ apps:
     plugs:
       - home
       - network-bind
+  black:
+    command: bin/black
+    plugs:
+      - home
   isort:
     command: bin/isort
     plugs:
