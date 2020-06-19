@@ -60,7 +60,7 @@ parts:
     override-build: |
       set -e
       snapcraftctl build
-      PYLS_VERSION="$(pip show pip | awk '/^Version/ { print $2}')"
+      PYLS_VERSION="$(pip show python-language-server | awk '$1 == "Version:" { print $2 }')"
       GIT_HASH="$(git --work-tree "$SNAPCRAFT_PROJECT_DIR" rev-parse --short HEAD)"
       snapcraftctl set-version "${PYLS_VERSION}-snap.${GIT_HASH}"
       python3 -m compileall -q .
