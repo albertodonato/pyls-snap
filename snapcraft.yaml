@@ -22,6 +22,10 @@ apps:
     command: bin/black
     plugs:
       - home
+  flake8:
+    command: bin/flake8
+    plugs:
+      - home
   isort:
     command: bin/isort
     plugs:

@@ -1,6 +1,6 @@
 # Snap for the python-language-server
 
-[![Snap Status](https://build.snapcraft.io/badge/albertodonato/pyls-snap.svg)](https://build.snapcraft.io/user/albertodonato/pyls-snap)
+[![Snap Package](https://snapcraft.io/pyls/badge.svg)](https://snapcraft.io/pyls)
 
 This snap provides a full installation of [Python Language
 Server](https://github.com/palantir/python-language-server).
@@ -17,8 +17,8 @@ It can be installed from the store via:
     sudo snap install pyls
 ```
 
-It provides the `pyls` command and also exposes related tools (`isort`, `mypy`,
-`pyflakes`, ...).
+It provides the `pyls` command and also exposes related tools (`flake8`,
+`isort`, `mypy`, `pyflakes`, ...).
 
 [![Get it from the Snap Store](https://snapcraft.io/static/images/badges/en/snap-store-black.svg)](https://snapcraft.io/pyls)
 
