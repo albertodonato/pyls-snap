@@ -2,6 +2,9 @@
 
 [![Snap Package](https://snapcraft.io/pyls/badge.svg)](https://snapcraft.io/pyls)
 
+
+**NOTE: This snap is no longer maintained, in favor of the [Python LSP Server](https://github.com/albertodonato/pylsp-snap) one**
+
 This snap provides a full installation of [Python Language Server](https://github.com/palantir/python-language-server).
 
 It also includes the following plugins:
